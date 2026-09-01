@@ -6,11 +6,11 @@ Repositorio del grupo. Partir de este esqueleto. No borrar la estructura de `src
 
 | Nombre | Mail | GitHub |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Wendy Patiño Pinto | wendiipatinopinto@gmail.com | wendypatinopinto |
+| Mariela Valdez Ibáñez | marie.valdez.369@gmail.com | marievaldez369-ops |
+| Natalia Villano | nataliavillano123@gmail.com | natal1avyy |
 
-**Tema elegido:** Pokédex / Recetario / Biblioteca musical (dejar uno)
+**Tema elegido:**  Recetario
 
 ## Cómo ejecutar
 
