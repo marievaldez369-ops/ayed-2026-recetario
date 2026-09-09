@@ -6,7 +6,7 @@ Repositorio del grupo. Partir de este esqueleto. No borrar la estructura de `src
 
 | Nombre | DNI | Mail | GitHub |
 | --- | --- | --- | --- |
-| Wendy Patiño Pinto | | wendiipatinopinto@gmail.com | wendypatinopinto |
+| Wendy Patiño Pinto | 37426702 | wendiipatinopinto@gmail.com | wendypatinopinto |
 | Mariela Valdez Ibáñez | 34691185 | marie.valdez.369@gmail.com | marievaldez369-ops |
 | Natalia Villano | 46818847 |nataliavillano123@gmail.com | natal1avyy |
 
