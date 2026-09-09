@@ -10,7 +10,9 @@ Repositorio del grupo. Partir de este esqueleto. No borrar la estructura de `src
 | Mariela Valdez Ibáñez | | marie.valdez.369@gmail.com | marievaldez369-ops |
 | Natalia Villano | 46818847 |nataliavillano123@gmail.com | natal1avyy |
 
-**Tema elegido:**  Recetario
+**Tema elegido:**  Recetario: 
+El sistema consiste en un catálogo de recetas que permite listar y
+organizar diferentes recetas mediante un programa desarrollado en Python.
 
 ## Cómo ejecutar
 
