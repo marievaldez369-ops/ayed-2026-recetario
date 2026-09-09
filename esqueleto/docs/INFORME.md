@@ -4,9 +4,9 @@ Completar y hacer crecer en cada entrega. No hace falta prosa larga: oraciones c
 
 ## 1. Grupo y tema
 
-- Tema:
-- Por qué lo eligieron (5–8 líneas):
-
+- Tema: Recetario
+- Por qué lo eligieron (5–8 líneas): Este tema fue elegido ya que nos permite trabajar con varios elementos a la vez, relacionarlo entre sí y, de esa manera representar información detallada sobre las recetas, ya sea mostrando sus ingredientes, y sus pasos a seguir. Además, consideramos que es un dominio sencillo de comprender y que permite incorporar diferentes estructuras de datos durante el desarrollo del proyecto. 
+ 
 ## 2. Modelo
 
 Qué es un ítem del catálogo. Qué es mutable y qué no (E1). Cómo se relacionan catálogo, colección principal, pila y cola.
