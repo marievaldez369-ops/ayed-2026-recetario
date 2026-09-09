@@ -11,6 +11,7 @@ Repositorio del grupo. Partir de este esqueleto. No borrar la estructura de `src
 | Natalia Villano | 46818847 |nataliavillano123@gmail.com | natal1avyy |
 
 **Tema elegido:**  Recetario: 
+
 El sistema consiste en un catálogo de recetas que permite listar y
 organizar diferentes recetas mediante un programa desarrollado en Python.
 
