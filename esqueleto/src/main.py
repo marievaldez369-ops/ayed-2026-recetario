@@ -1,4 +1,5 @@
 from src.config import TEMA
+from src.dominio.Recetario import Mostrar_catalogo
 
 TEMAS = {
     "pokedex": "Pokédex",
@@ -38,6 +39,8 @@ def main():
         opcion = input("> ").strip()
         if opcion == "0":
             print("Chau.")
+        elif opcion == "1"
+            Mostrar_catalogo()
         elif opcion in {"1", "2", "3", "4", "5", "6", "7", "8", "9"}:
             pendiente()
         else:
