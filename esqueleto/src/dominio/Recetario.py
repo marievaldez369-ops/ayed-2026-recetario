@@ -9,7 +9,7 @@ catalogo = [
      "ingredientes": ["masa", "salsa de tomate", "mozzarella", "albahaca"]}
 ]
 
-def mostrar_catalogo():
+def Mostrar_catalogo():
     print("Catálogo de Recetas:")
     for i, receta in enumerate(catalogo, start=1):
         print(f"{i}. {receta['nombre']}")
