@@ -27,19 +27,17 @@ Qué es un ítem del catálogo. Qué es mutable y qué no (E1). Cómo se relacio
 
 -La colección representa la estructura base que organiza la receta.
 
--La pila s eus apa mejorar pasos de prepearacion.
+-La pila se uso para mejorar pasos de preparación.
 
--La cola se usa para manejar pedidos o tareas en orden.
+-La cola se uso para manejar pedidos o tareas en orden.
 
 ## 3. Recursión (E2)
-Usamos una función recursiva para descomponer recetas que contiene sub-recetas.
-Ejm: pizza : incluye masa, la función entra en masa y devuelve sus ingrediente sfinales.
-Caso Base: cuando el ingrediente no es sub-receta, se agrega directo.
 Caso recursivo: cuando el ingrediente es sub-receta, se llama de nuevo la funcion.
-- Función:
-- Caso base:
-- Caso recursivo:
+- Función:Usamos una función recursiva para descomponer recetas que contiene sub-recetas.
+-Caso Base: cuando el ingrediente no es sub-receta, se agrega directo.
+-Caso recursivo: cuando el ingrediente es sub-receta, se llama de nuevo la funcion.
 - Traza de un ejemplo real del dataset:
+Ejm: pizza : incluye masa, la función entra en masa y devuelve sus ingredientes finales.
 
 ## 4. TADs (E3)
 
