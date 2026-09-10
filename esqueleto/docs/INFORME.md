@@ -39,7 +39,7 @@ Qué es un ítem del catálogo. Qué es mutable y qué no (E1). Cómo se relacio
 -Caso recursivo: cuando el ingrediente es sub-receta, se llama de nuevo la funcion.
 
 - Traza de un ejemplo real del dataset:
-- 
+
 Ejm: pizza : incluye masa, la función entra en masa y devuelve sus ingredientes finales. Luego suma los demas ingresdientes ala pizza obteniendo la lista completa, con esto evitamos duplicar el codigo y refleja que la receta puede estar compuesta por otras; la precaución es evitar las referencias circulares, que podria generar un bucle infinito.
 
 ## 4. TADs (E3)
@@ -50,8 +50,10 @@ Ejm: pizza : incluye masa, la función entra en masa y devuelve sus ingredientes
 | Pila | paso de preparación, apilar  y desapilar |el ultimo en entrar es el primero en salir|
 | Cola | agregar, listar,buscar |  el primero entrar el primero en salir|
 
-Dónde se usa cada uno en el dominio. 
+Dónde se usa cada uno en el dominio.
+
 -En los pasos de preparación de la recta.
+
 - Pedidos de recetas en la cocina.
 
 ## 5. Complejidad (E4)
