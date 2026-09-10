@@ -42,7 +42,7 @@ Ejm: pizza : incluye masa, la función entra en masa y devuelve sus ingredientes
 
 | TAD | Operaciones | Invariante |
 | --- | --- | --- |
-| ListaEnlazada |  |  |
+| ListaEnlazada | insertar, eliminar, recorrer |mantiene el orden de las recetas en el catalogo|
 | Pila |  |  |
 | Cola |  |  |
 
