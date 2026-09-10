@@ -29,7 +29,7 @@ Qué es un ítem del catálogo. Qué es mutable y qué no (E1). Cómo se relacio
 
 -La pila se uso para mejorar pasos de preparación.
 
--La cola se uso para manejar pedidos o tareas en orden.
+-La cola se uso para manejar tareas en orden.
 
 ## 3. Recursión (E2)
 - Función: Usamos una función recursiva para descomponer recetas que contiene sub-recetas y la recursión nos permite descomponer sin importar cuantos niveles haya.
