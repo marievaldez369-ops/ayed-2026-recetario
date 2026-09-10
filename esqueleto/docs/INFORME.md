@@ -15,14 +15,14 @@ Qué es un ítem del catálogo. Qué es mutable y qué no (E1). Cómo se relacio
 ```text
 (pueden pegar un diagrama ASCII o una lista de clases)
 ```
-Catalogo: cada receta con su nombre y lista de ingredientes.
-Mutables: listas y diccionarios(recetas e ingredientes), es dinámica y pueden cambiar.
-Inmutables: nombre de receta(strings) para evitar efectos secundarios y proteger la identidad de cada receta.
-Relación catalogo/coleccion/pila/cola:
-El catalogo es la lista principal.
-La colección representa la estructura base que organiza la receta.
-La pila s eus apa mejorar pasos de prepearacion.
-La cola se usa para manejar pedidos o tareas en orden.
+-Catalogo: cada receta con su nombre y lista de ingredientes.
+-Mutables: listas y diccionarios(recetas e ingredientes), es dinámica y pueden cambiar.
+-Inmutables: nombre de receta(strings) para evitar efectos secundarios y proteger la identidad de cada receta.
+-Relación catalogo/coleccion/pila/cola:
+-El catalogo es la lista principal.
+-La colección representa la estructura base que organiza la receta.
+-La pila s eus apa mejorar pasos de prepearacion.
+-La cola se usa para manejar pedidos o tareas en orden.
 ## 3. Recursión (E2)
 Usamos una función recursiva para descomponer recetas que contiene sub-recetas.
 Ejm: pizza : incluye masa, la función entra en masa y devuelve sus ingrediente sfinales.
