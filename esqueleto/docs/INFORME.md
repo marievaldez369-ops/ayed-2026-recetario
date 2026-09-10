@@ -32,12 +32,11 @@ Qué es un ítem del catálogo. Qué es mutable y qué no (E1). Cómo se relacio
 -La cola se uso para manejar pedidos o tareas en orden.
 
 ## 3. Recursión (E2)
-Caso recursivo: cuando el ingrediente es sub-receta, se llama de nuevo la funcion.
-- Función:Usamos una función recursiva para descomponer recetas que contiene sub-recetas.
+- Función: Usamos una función recursiva para descomponer recetas que contiene sub-recetas y la recursión nos permite descomponer sin importar cuantos niveles haya.
 -Caso Base: cuando el ingrediente no es sub-receta, se agrega directo.
 -Caso recursivo: cuando el ingrediente es sub-receta, se llama de nuevo la funcion.
 - Traza de un ejemplo real del dataset:
-Ejm: pizza : incluye masa, la función entra en masa y devuelve sus ingredientes finales.
+Ejm: pizza : incluye masa, la función entra en masa y devuelve sus ingredientes finales. Luego suma los demas ingresdientes ala pizza obteniendo la lista completa, con esto evitamos duplicar el codigo y refleja que la receta puede estar compuesta por otras; la precaución es evitar las referencias circulares, que podria generar un bucle infinito.
 
 ## 4. TADs (E3)
 
