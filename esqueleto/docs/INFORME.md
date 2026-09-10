@@ -15,21 +15,21 @@ Qué es un ítem del catálogo. Qué es mutable y qué no (E1). Cómo se relacio
 ```text
 (pueden pegar un diagrama ASCII o una lista de clases)
 ```
--Catalogo: cada receta con su nombre y lista de ingredientes.  
+Un item del catálogo sería cada receta individual , compuesta por su nombre y una lista de ingredientes. 
 
--Mutables: listas y diccionarios(recetas e ingredientes), es dinámica y pueden cambiar.
+-Mutables: listas y diccionarios(recetas e ingredientes), son dinámicas y pueden cambiar.
 
 -Inmutables: nombre de receta(strings) para evitar efectos secundarios y proteger la identidad de cada receta.
 
--Relación catalogo/coleccion/pila/cola:
+-Relación catálogo/colección/pila/cola:
 
--El catalogo es la lista principal.
+-El catálogo es la lista principal y almacena las recetas disponibles.
 
--La colección representa la estructura base que organiza la receta.
+-La colección representa la estructura base que organiza cada receta.
 
--La pila se uso para mejorar pasos de preparación.
+-La pila se usó para administrar los pasos de preparación.
 
--La cola se uso para manejar tareas en orden.
+-La cola se usó para manejar tareas en orden.
 
 ## 3. Recursión (E2)
 - Función: Usamos una función recursiva para descomponer recetas que contiene sub-recetas y la recursión nos permite descomponer sin importar cuantos niveles haya.
