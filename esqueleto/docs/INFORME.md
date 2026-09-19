@@ -32,15 +32,18 @@ Un item del catálogo sería cada receta individual , compuesta por su nombre y 
 -La cola se usó para manejar tareas en orden.
 
 ## 3. Recursión (E2)
-- Función: Usamos una función recursiva para descomponer recetas que contiene sub-recetas y la recursión nos permite descomponer sin importar cuantos niveles haya.
-- 
--Caso Base: cuando el ingrediente no es sub-receta, se agrega directo.
+- Función: En esta entrega usamos una función recursiva para descomponer recetas que contiene sub-recetas, la recursión nos permite descomponer sin importar cuantos niveles haya. El objetivo es mostrar cómo una receta puede estar compuesta por más recetas y cómo el programa desglosa todos los ingredientes hasta llegar a las hojas.
+  
+- Caso Base: Cuando la receta no tiene subrecetas, devuelve sus ingredientes.
 
--Caso recursivo: cuando el ingrediente es sub-receta, se llama de nuevo la funcion.
+- Caso recursivo: Cuando la receta tiene subrecetas, acumula sus ingredientes y sigue explorando cada subreceta hasta y agrega los demás ingredientes.
 
 - Traza de un ejemplo real del dataset:
-
-Ejm: pizza : incluye masa, la función entra en masa y devuelve sus ingredientes finales. Luego suma los demas ingresdientes ala pizza obteniendo la lista completa, con esto evitamos duplicar el codigo y refleja que la receta puede estar compuesta por otras; la precaución es evitar las referencias circulares, que podria generar un bucle infinito.
+ Ejemplo paso a paso:
+ 1- Hamburguesa completa → ingredientes propios: lechuga, tomate, queso.
+ 2- Subreceta Medallón de carne → carne picada, huevo, pan rallado, sal, pimienta.
+ 3- Subreceta Pan casero → harina, levadura, agua, azúcar, sal, manteca, huevo.
+Resultado final: combinación de todos los ingredientes.
 
 ## 4. TADs (E3)
 
