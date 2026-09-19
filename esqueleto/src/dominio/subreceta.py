@@ -15,7 +15,7 @@ def obtener_ingredientes_totales(receta, recetario):
     ingredientes.extend (
       obtener_ingredientes_totales(subreceta, recetario)
     )
-
-return ingredientes
+    
+  return ingredientes
 
 
