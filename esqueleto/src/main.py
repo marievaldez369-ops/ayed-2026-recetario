@@ -1,5 +1,5 @@
 from src.config import TEMA
-from src.dominio.Recetario import Mostrar_catalogo
+from src.dominio.Recetario import Mostrar_catalogo, Operacion_receursiva
 
 TEMAS = {
     "pokedex": "Pokédex",
