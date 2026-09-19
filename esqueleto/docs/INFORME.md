@@ -41,8 +41,11 @@ Un item del catálogo sería cada receta individual , compuesta por su nombre y 
 - Traza de un ejemplo real del dataset:
  Ejemplo paso a paso:
  1- Hamburguesa completa → ingredientes propios: lechuga, tomate, queso.
+  
  2- Subreceta Medallón de carne → carne picada, huevo, pan rallado, sal, pimienta.
+ 
  3- Subreceta Pan casero → harina, levadura, agua, azúcar, sal, manteca, huevo.
+
 Resultado final: combinación de todos los ingredientes.
 
 ## 4. TADs (E3)
