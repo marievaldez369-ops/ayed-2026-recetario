@@ -39,7 +39,9 @@ Un item del catálogo sería cada receta individual , compuesta por su nombre y 
 - Caso recursivo: Cuando la receta tiene subrecetas, acumula sus ingredientes y sigue explorando cada subreceta hasta y agrega los demás ingredientes.
 
 - Traza de un ejemplo real del dataset:
+
  Ejemplo paso a paso:
+
  1- Hamburguesa completa → ingredientes propios: lechuga, tomate, queso.
   
  2- Subreceta Medallón de carne → carne picada, huevo, pan rallado, sal, pimienta.
