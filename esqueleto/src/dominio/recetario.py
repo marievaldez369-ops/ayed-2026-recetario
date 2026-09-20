@@ -97,7 +97,7 @@ def mostrar_receta_completa(receta, nivel=0):
             mostrar_receta_completa(subreceta, nivel + 1)
 
 
-def Operacion_recursiva():
+def buscar_receta_por_id():
     global _recetario_global
 
     if _recetario_global is None:
