@@ -32,11 +32,11 @@ Un item del catálogo sería cada receta individual , compuesta por su nombre y 
 -La cola se usó para manejar tareas en orden.
 
 ## 3. Recursión (E2)
-- Función: En esta entrega usamos una función recursiva para descomponer recetas que contiene sub-recetas, la recursión nos permite descomponer sin importar cuantos niveles haya. El objetivo es mostrar cómo una receta puede estar compuesta por más recetas y cómo el programa desglosa todos los ingredientes hasta llegar a las hojas.
+- Función: En esta entrega usamos una función recursiva que llamamos mostrar_receta_completa() para descomponer recetas que contiene sub-recetas, la recursión nos permite descomponer sin importar cuantos niveles haya. El objetivo es mostrar cómo una receta puede estar compuesta por más recetas y cómo el programa desglosa todos los ingredientes hasta llegar a las hojas.
   
 - Caso Base: Cuando la receta no tiene subrecetas, devuelve sus ingredientes.
 
-- Caso recursivo: Cuando la receta tiene subrecetas, acumula sus ingredientes y sigue explorando cada subreceta hasta y agrega los demás ingredientes.
+- Caso recursivo: Cuando la receta tiene subrecetas, acumula sus ingredientes y sigue explorando cada subreceta hasta terminar y agrega los demás ingredientes.
 
 - Traza de un ejemplo real del dataset:
 
