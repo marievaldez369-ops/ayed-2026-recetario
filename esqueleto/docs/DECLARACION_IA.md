@@ -7,7 +7,7 @@ Fecha de esta versión del archivo:
 | Entrega | Fecha | Herramienta (ChatGPT, Cursor, Copilot, otra) | Para qué (diseño, código, debug, docs) | Qué pegaron o generaron | Qué reescribieron / revisaron a mano | Integrante |
 | --- | --- | --- | --- | --- | --- | --- |
 | E1 | 09/09/26 | ChatGPT | Se uso IA generativa como apoyo para comprender conceptos y resolver dudas sobre Python  |  |  |  |
-| E2 |  |  |  |  |  |  |
+| E2 | 20/09/2026 | Gemini/Copilot | Se uso para detectar errores de tipeo/sintaxis y para aclarar conceptos sobre Python |  |  |  |
 | E3 |  |  |  |  |  |  |
 | E4 |  |  |  |  |  |  |
 | E5 |  |  |  |  |  |  |
