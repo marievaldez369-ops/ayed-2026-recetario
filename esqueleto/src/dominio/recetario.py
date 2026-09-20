@@ -84,17 +84,12 @@ def mostrar_receta_completa(receta, nivel=0):
 
         for ingrediente in receta.ingredientes:
             print(f"{sangria}- {ingrediente}")
-
+#Caso base: si la receta no tiene sub-recetas, se termina la función
+    if not receta.subrecetas:
+        return
+#Caso recursivo: si la receta tiene sub-recetas, se llama a la función para cada una de ellas
     for subreceta in receta.subrecetas:
-        print(f"\n{sangria}SUB-RECETA: {subreceta.nombre.upper()}")
-
-        print(f"{sangria}Ingredientes:")
-
-        for ingrediente in subreceta.ingredientes:
-            print(f"{sangria}- {ingrediente}")
-
-        if subreceta.subrecetas:
-            mostrar_receta_completa(subreceta, nivel + 1)
+        mostrar_receta_completa(subreceta, nivel + 1)
 
 
 def buscar_receta_por_id():
