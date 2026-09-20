@@ -1,5 +1,5 @@
 from src.config import TEMA
-from src.dominio.recetario import Mostrar_catalogo, Operacion_recursiva
+from src.dominio.recetario import Mostrar_catalogo, buscar_receta_por_id
 
 TEMAS = {
     "pokedex": "Pokédex",
@@ -42,7 +42,7 @@ def main():
         elif opcion == "1":
             Mostrar_catalogo() 
         elif opcion == "5":
-            Operacion_recursiva()
+            buscar_receta_por_id()
         elif opcion in {"2", "3", "4", "6", "7", "8", "9"}:
             pendiente()
         else:
