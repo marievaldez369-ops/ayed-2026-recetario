@@ -8,14 +8,14 @@ Mínimos: 8 casos escritos en E2; ejecutados en E3; 15 de regresión en E6 (pila
 
 | ID | Entrega | Acción (pasos en el CLI) | Datos | Resultado esperado | Resultado | Notas |
 | --- | --- | --- | --- | --- | --- | --- |
-| P01 | E1 | Arrancar el programa y listar catálogo | dataset de la cátedra | lista no vacía, sin traceback |  |  |
-| P02 | E1 | Elegir un ítem inexistente | id = -1 | mensaje claro, el menú sigue |  |  |
-| P03 | E2 | Operación recursiva sobre un ítem con cadena | ver consigna §3.3 | imprime la cadena completa |  |  |
-| P04 | E2 | Operación recursiva sobre un ítem sin derivados |  | solo el ítem (caso base) |  |  |
-| P05 | E2 | Seleccionar opción 5 del menú y escribir un valor no numérico |  | Mensaje de error "Ingrese un número válido. Por favor." |  |  |
-| P06 | E2 | Seleccionar opción 5 del menú y escribir un número que no corresponde a ninguna receta |  | Mensaje de error "No se encontró esa receta en el catálogo." |  |  |
-| P07 | E2 | Seleccionar opción 5 del menú y elegir la receta con ID 4. |  | Lista de ingredientes, y las subrecetas. |  |  |
-| P08 | E2 | Seleccionar opción 5 del menú y presionar Enter sin escribir nada. |  | Mensaje de  error "Ingrese un número válido. Por favor." |  |  |
+| P01 | E1 | Arrancar el programa y listar catálogo | dataset de la cátedra | lista no vacía, sin traceback | no corrido |  |
+| P02 | E1 | Elegir un ítem inexistente | id = -1 | mensaje claro, el menú sigue | no corrido |  |
+| P03 | E2 | Operación recursiva sobre un ítem con cadena | ver consigna §3.3 | imprime la cadena completa | no corrido |  |
+| P04 | E2 | Operación recursiva sobre un ítem sin derivados |  | solo el ítem (caso base) | no corrido |  |
+| P05 | E2 | Seleccionar opción 5 del menú y escribir un valor no numérico |  | Mensaje de error "Ingrese un número válido. Por favor." | no corrido |  |
+| P06 | E2 | Seleccionar opción 5 del menú y escribir un número que no corresponde a ninguna receta |  | Mensaje de error "No se encontró esa receta en el catálogo." | no corrido |  |
+| P07 | E2 | Seleccionar opción 5 del menú y elegir la receta con ID 4. |  | Lista de ingredientes, y las subrecetas. | no corrido |  |
+| P08 | E2 | Seleccionar opción 5 del menú y presionar Enter sin escribir nada. |  | Mensaje de  error "Ingrese un número válido. Por favor." | no corrido |  |
 | P09 | E3 | Agregar a la colección principal hasta el tope | equipo de 6 / equivalente | el séptimo falla con excepción propia |  |  |
 | P10 | E3 | Desapilar historial vacío | pila vacía | excepción propia, menú sigue |  |  |
 | P11 | E3 | Desencolar cola vacía | cola vacía | excepción propia, menú sigue |  |  |
