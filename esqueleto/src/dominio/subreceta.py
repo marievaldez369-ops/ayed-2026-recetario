@@ -11,7 +11,7 @@ class Subreceta:
 def obtener_ingredientes_totales(receta, recetario=None):
   ingredientes = list(receta.ingredientes)
 
-  for subrecetas in receta.subrecetas:
+  for subreceta in receta.subrecetas:
     ingredientes.extend (
       obtener_ingredientes_totales(subreceta, recetario)
     )
