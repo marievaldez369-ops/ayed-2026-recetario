@@ -65,7 +65,7 @@ Dónde se usa cada uno en el dominio.
 - Pedidos de recetas en la cocina.
 ListaEnlazada: la usamos para almacenar las recetas del catálogo.
 Pila: la usamos para guardar un historial de acciones realizadas.
-Cola: la usamos para administrar los pedidos respetando el orden de llegada.
+Cola: la usamos para administrar los pedidos respetando el orden de llegada. 
 ## 5. Complejidad (E4)
 
 | Operación | Tiempo | Espacio | Por qué |
