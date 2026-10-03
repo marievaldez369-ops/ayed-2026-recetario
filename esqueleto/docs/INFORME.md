@@ -54,16 +54,18 @@ Resultado final: combinación de todos los ingredientes.
 
 | TAD | Operaciones | Invariante |
 | --- | --- | --- |
-| ListaEnlazada | insertar, eliminar, recorrer |mantiene el orden de las recetas en el catalogo|
-| Pila | paso de preparación, apilar  y desapilar |el ultimo en entrar es el primero en salir|
-| Cola | agregar, listar,buscar |  el primero entrar el primero en salir|
+| ListaEnlazada | insertar, eliminar, buscar y recorrer |mantenemos los elementos unidos mediante nodos y conservamos el tamaño actualizado de la lista|
+| Pila | apilar, desapilar y ver tope |el último elemento agregado es el primero en salir (LIFO)|
+| Cola | encolar, desencolar y ver frente|  el primer elemento agregado es el primero en salir (FIFO)|
 
 Dónde se usa cada uno en el dominio.
 
 -En los pasos de preparación de la recta.
 
 - Pedidos de recetas en la cocina.
-
+ListaEnlazada: la usamos para almacenar las recetas del catálogo.
+Pila: la usamos para guardar un historial de acciones realizadas.
+Cola: la usamos para administrar los pedidos respetando el orden de llegada.
 ## 5. Complejidad (E4)
 
 | Operación | Tiempo | Espacio | Por qué |
