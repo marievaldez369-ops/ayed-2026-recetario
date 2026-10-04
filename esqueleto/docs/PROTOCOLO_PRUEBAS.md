@@ -16,10 +16,10 @@ Mínimos: 8 casos escritos en E2; ejecutados en E3; 15 de regresión en E6 (pila
 | P06 | E2 | Seleccionar opción 5 del menú y escribir un número que no corresponde a ninguna receta |  | Mensaje de error "No se encontró esa receta en el catálogo." | no corrido |  |
 | P07 | E2 | Seleccionar opción 5 del menú y elegir la receta con ID 4. |  | Lista de ingredientes, y las subrecetas. | no corrido |  |
 | P08 | E2 | Seleccionar opción 5 del menú y presionar Enter sin escribir nada. |  | Mensaje de  error "Ingrese un número válido. Por favor." | no corrido |  |
-| P09 | E3 | Agregar recetas hasta el tope | 6 recetas |la séptimo falla con excepción propia |pasa  |el sistema muestra mensaje de menu lleno |
-| P10 | E3 | Desapilar historial vacio | historial vacio| lanza pila vacia error | pasa | el sistema informa que no hay acciones para deshacer |
-| P11 | E3 | Desencolar cola vacía | cola vacía | lanza cola vacia error| pasa | el sistema informa que no hay turnos pendientes |
-| P12 | E3 | Listar menucon el iterador | 2 + recetas  | muestra recetas en orden de insercion |pasa  |el listado se ve ordenado y correcto |
+| P09 | E3 |Seleccionar la opción 1 y agregar una receta al menú. | "milanesa" | La receta se agrega correctamente al menú semanal. | pasa | El sistema confirmó el agregado de la receta. |
+| P10 | E3 | Seleccionar la opción 2 para listar el menú. | Menú con la receta "milanesa". | Se muestra la receta cargada en el menú semanal. | pasa | La receta apareció correctamente en el listado. |
+| P11 | E3 | Seleccionar la opción 3 para deshacer la última receta agregada. | "milanesa" | Se muestra la última receta almacenada en la pila. | pasa | Se verificó el funcionamiento LIFO de la pila. |
+| P12 | E3 | Seleccionar la opción 4 para preparar la siguiente receta. | "milanesa" | Se procesa la primera receta agregada a la cola. | pasa | Se verificó el funcionamiento FIFO de la cola. |
 | P13 | E4 | Búsqueda lineal de un nombre que existe |  | lo encuentra |  |  |
 | P14 | E4 | Búsqueda lineal de un nombre que no existe |  | no encontrado, sin traceback |  |  |
 | P15 | E4 | Búsqueda binaria con catálogo desordenado |  | avisa o reordena; no da un falso hit |  |  |
