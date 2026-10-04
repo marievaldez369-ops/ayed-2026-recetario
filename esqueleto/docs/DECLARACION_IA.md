@@ -8,7 +8,7 @@ Fecha de esta versión del archivo:
 | --- | --- | --- | --- | --- | --- | --- |
 | E1 | 09/09/26 | ChatGPT | Se uso IA generativa como apoyo para comprender conceptos y resolver dudas sobre Python  |  |  |  |
 | E2 | 20/09/2026 | Gemini/Copilot | Se uso para detectar errores de tipeo/sintaxis y para aclarar conceptos sobre Python |  |  |  |
-| E3 |  |  |  |  |  |  |
+| E3 |03/10/2026 Utilizamos IA como apoyo para comprender conceptos, corregir errores y mejorar el código desarrollado para la entrega.  | 
 | E4 |  |  |  |  |  |  |
 | E5 |  |  |  |  |  |  |
 | E6 |  |  |  |  |  |  |
