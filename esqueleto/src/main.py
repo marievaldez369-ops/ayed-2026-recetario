@@ -4,12 +4,15 @@ from src.dominio.menu_semanal import MenuSemanal
 from src.dominio.historial import HistorialCocina
 from src.dominio.cola_preparacion import ColaPreparacion
 from src.excepciones import ColeccionLlenaError, PilaVaciaError, ColaVaciaError
+from src.algoritmos.busqueda import busqueda_lineal, busqueda_binaria
+from src.algoritmos.ordenamiento import ordenar_seleccion, ordenar_insercion
 
 TEMAS = {
     "pokedex": "Pokédex",
     "recetario": "Recetario",
     "musica": "Biblioteca musical",
 }
+
 #Instancias globales del dominio, se colocan aca para que todas las funciones puedan acceder a ellas.
 menu_semanal = MenuSemanal()
 historial = HistorialCocina()
@@ -32,6 +35,7 @@ def mostrar_menu():
     print("8. Cola")
     print("9. Guardar / cargar archivos")
     print("0. Salir")
+
 #Definimos el menu para el menu semanal, permite agregar, eliminar y listar recetas.
 def menu_menu_semanal():
     while True:
@@ -112,6 +116,7 @@ def menu_historial():
                     print("No hay recetas en el historial.")
             except PilaVaciaError as e:
                 print(f"{e}")
+
 def menu_cola_preparacion():
     while True:
         print("=== Cola de preparación ===")
@@ -146,19 +151,91 @@ def menu_cola_preparacion():
                 print(f"Próxima receta a preparar: '{receta.nombre}'.")
             except ColaVaciaError as e:
                 print(f"{e}")
+
+def menu_busqueda(ordenado_por):
+    while True:
+        print("=== Menú de Búsqueda ===")
+        print("1. Búsqueda lineal por nombre")
+        print("2. Búsqueda binaria por nombre")
+        print("0. Volver al menú principal")
+
+        opcion = input("> ").strip()
+        if opcion == "0":
+            break
+
+        clave = input("Ingrese el nombre de la receta: ").strip()
+
+        # BÚSQUEDA LINEAL
+        if opcion == "1":
+            resultado = busqueda_lineal(
+                Mostrar_catalogo(), 
+                clave,
+                obtener_clave=lambda r: r.nombre
+            )
+            if resultado is None:
+                print("No encontrado.\n")
+            else:
+                print(f"Encontrado: {resultado}\n")
+
+        # BÚSQUEDA BINARIA
+        elif opcion == "2":
+            if ordenado_por != "nombre":
+                print("El catálogo no está ordenado por nombre.")
+                print("Usá la opción 'Ordenar' antes de ejecutar búsqueda binaria.\n")
+            else:
+                resultado = busqueda_binaria(
+                    Mostrar_catalogo(),
+                    clave,
+                    obtener_clave=lambda r: r.nombre
+                )
+                if resultado is None:
+                    print("No encontrado.\n")
+                else:
+                    print(f"Encontrado: {resultado}\n")
+        else:
+            print("Opción inválida.\n")
+
+def menu_ordenar():
+    while True:
+        print("=== Menú de Ordenamiento ===")
+        print("1. Ordenar por nombre (selección)")
+        print("2. Ordenar por nombre (inserción)")
+        print("0. Volver al menú principal")
+
+        opcion = input("> ").strip()
+        if opcion == "0":
+            return None
+        catalago = Mostrar_catalogo()
+        if opcion == "1":
+            ordenar_seleccion(catalago, obtener_clave=lambda r: r.nombre)
+            print("Catálogo ordenado por nombre usando selección.\n")
+            return "nombre"
+        elif opcion == "2":
+            ordenar_insercion(catalago, obtener_clave=lambda r: r.nombre)
+            print("Catálogo ordenado por nombre usando inserción.\n")
+            return "nombre"
+        else:
+            print("Opción inválida.\n")
 def main():
     if TEMA not in TEMAS:
         print("Seteá TEMA en src/config.py: 'pokedex', 'recetario' o 'musica'.")
         return
 
     opcion = None
+    ordenado_por = None  
     while opcion != "0":
         mostrar_menu()
         opcion = input("> ").strip()
         if opcion == "0":
             print("Chau.")
         elif opcion == "1":
-            Mostrar_catalogo() 
+            Mostrar_catalogo()
+        elif opcion == "3":
+            menu_busqueda(ordenado_por) 
+        elif opcion == "4":
+            nuevo_estado = menu_ordenar()
+            if nuevo_estado is not None:
+                ordenado_por = nuevo_estado
         elif opcion == "5":
             buscar_receta_por_id()
         elif opcion == "6":
@@ -167,7 +244,7 @@ def main():
             menu_historial()
         elif opcion == "8":
             menu_cola_preparacion()
-        elif opcion in {"2", "3", "4", "9"}:
+        elif opcion in {"2", "9"}:
             pendiente()
         else:
             print("Opción inválida.")
