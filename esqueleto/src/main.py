@@ -1,5 +1,8 @@
 from src.config import TEMA
-from src.dominio.recetario import Mostrar_catalogo, buscar_receta_por_id
+from src.dominio.recetario import (
+    Mostrar_catalogo, buscar_receta_por_id,
+    obtener_recetas_catalogo, actualizar_orden_catalogo,
+)
 from src.dominio.menu_semanal import MenuSemanal
 from src.dominio.historial import HistorialCocina
 from src.dominio.cola_preparacion import ColaPreparacion
@@ -156,66 +159,71 @@ def menu_busqueda(ordenado_por):
     while True:
         print("=== Menú de Búsqueda ===")
         print("1. Búsqueda lineal por nombre")
-        print("2. Búsqueda binaria por nombre")
+        if ordenado_por == "nombre":
+            print("2. Búsqueda binaria por nombre")
+        else:
+            print("2. Búsqueda binaria por nombre (requiere ordenar primero)")
         print("0. Volver al menú principal")
 
         opcion = input("> ").strip()
         if opcion == "0":
             break
+        if opcion not in {"1", "2"}:
+            print("Opción inválida.\n")
+            continue
 
         clave = input("Ingrese el nombre de la receta: ").strip()
+        recetas = obtener_recetas_catalogo()
 
-        # BÚSQUEDA LINEAL
         if opcion == "1":
             resultado = busqueda_lineal(
-                Mostrar_catalogo(), 
-                clave,
-                obtener_clave=lambda r: r.nombre
+                recetas, clave, obtener_clave=lambda receta: receta.nombre
             )
-            if resultado is None:
-                print("No encontrado.\n")
-            else:
-                print(f"Encontrado: {resultado}\n")
-
-        # BÚSQUEDA BINARIA
-        elif opcion == "2":
-            if ordenado_por != "nombre":
-                print("El catálogo no está ordenado por nombre.")
-                print("Usá la opción 'Ordenar' antes de ejecutar búsqueda binaria.\n")
-            else:
-                resultado = busqueda_binaria(
-                    Mostrar_catalogo(),
-                    clave,
-                    obtener_clave=lambda r: r.nombre
-                )
-                if resultado is None:
-                    print("No encontrado.\n")
-                else:
-                    print(f"Encontrado: {resultado}\n")
+        elif ordenado_por != "nombre":
+            print("El catálogo no está ordenado por nombre.")
+            print("Usá la opción 'Ordenar' antes de ejecutar búsqueda binaria.\n")
+            continue
         else:
-            print("Opción inválida.\n")
+            resultado = busqueda_binaria(
+                recetas, clave, obtener_clave=lambda receta: receta.nombre
+            )
+
+        if resultado is None:
+            print("No encontrado.\n")
+        else:
+            print(f"Encontrado: {resultado.resumen()}\n")
+
 
 def menu_ordenar():
     while True:
         print("=== Menú de Ordenamiento ===")
         print("1. Ordenar por nombre (selección)")
-        print("2. Ordenar por nombre (inserción)")
+        print("2. Ordenar por ID (inserción)")
         print("0. Volver al menú principal")
 
         opcion = input("> ").strip()
         if opcion == "0":
             return None
-        catalago = Mostrar_catalogo()
+        if opcion not in {"1", "2"}:
+            print("Opción inválida.\n")
+            continue
+
+        recetas = obtener_recetas_catalogo()
         if opcion == "1":
-            ordenar_seleccion(catalago, obtener_clave=lambda r: r.nombre)
+            ordenadas = ordenar_seleccion(
+                recetas, obtener_clave=lambda receta: receta.nombre
+            )
+            actualizar_orden_catalogo(ordenadas)
             print("Catálogo ordenado por nombre usando selección.\n")
             return "nombre"
-        elif opcion == "2":
-            ordenar_insercion(catalago, obtener_clave=lambda r: r.nombre)
-            print("Catálogo ordenado por nombre usando inserción.\n")
-            return "nombre"
-        else:
-            print("Opción inválida.\n")
+
+        ordenadas = ordenar_insercion(
+            recetas, obtener_clave=lambda receta: receta.id
+        )
+        actualizar_orden_catalogo(ordenadas)
+        print("Catálogo ordenado por ID usando inserción.\n")
+        return "id"
+
 def main():
     if TEMA not in TEMAS:
         print("Seteá TEMA en src/config.py: 'pokedex', 'recetario' o 'musica'.")
