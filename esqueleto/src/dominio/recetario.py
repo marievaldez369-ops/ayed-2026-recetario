@@ -68,6 +68,22 @@ class Recetario:
 #catalogo para el menu 
 _recetario_global = None
 
+def obtener_recetas_catalogo():
+    """Devuelve las recetas del catálogo como una lista para los algoritmos."""
+    global _recetario_global
+    if _recetario_global is None:
+        _recetario_global = Recetario()
+    return list(_recetario_global.recetas.values())
+
+
+def actualizar_orden_catalogo(recetas):
+    """Actualiza el orden del catálogo sin modificar las recetas."""
+    global _recetario_global
+    if _recetario_global is None:
+        _recetario_global = Recetario()
+    _recetario_global.recetas = {receta.id: receta for receta in recetas}
+
+
 def Mostrar_catalogo():
     global _recetario_global
     if _recetario_global is None:
@@ -92,22 +108,24 @@ def mostrar_receta_completa(receta, nivel=0):
         mostrar_receta_completa(subreceta, nivel + 1)
 
 
-def buscar_receta_por_id():
+def buscar_receta_por_id(id_receta=None):
+    """Busca por ID; si no se recibe, solicita el ID por consola como en E2."""
     global _recetario_global
 
     if _recetario_global is None:
         _recetario_global = Recetario()
 
+    if id_receta is not None:
+        return _recetario_global.recetas.get(id_receta)
+
     try:
         print("\nIngrese el número de la receta que desea consultar:")
         opcion = input("> ").strip()
-
         id_receta = int(opcion)
         receta = _recetario_global.recetas.get(id_receta)
 
         if receta:
             mostrar_receta_completa(receta)
-
         else:
             print("No se encontró esa receta en el catálogo.")
 
