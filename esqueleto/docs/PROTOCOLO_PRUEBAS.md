@@ -22,10 +22,10 @@ Mínimos: 8 casos escritos en E2; ejecutados en E3; 15 de regresión en E6 (pila
 | E3-P10 | E3 | Seleccionar la opción 2 para listar el menú. | Menú con la receta "milanesa". | Se muestra la receta cargada en el menú semanal. | pasa | La receta apareció correctamente en el listado. |
 | E3-P11 | E3 | Seleccionar la opción 3 para deshacer la última receta agregada. | "milanesa" | Se muestra la última receta almacenada en la pila. | pasa | Se verificó el funcionamiento LIFO de la pila. |
 | E3-P12 | E3 | Seleccionar la opción 4 para preparar la siguiente receta. | "milanesa" | Se procesa la primera receta agregada a la cola. | pasa | Se verificó el funcionamiento FIFO de la cola. |
-| P09 | E4 | Búsqueda lineal de un nombre que existe | Pizza margarita | lo encuentra | pasa | Se encontró la receta. |
-| P10 | E4 | Búsqueda lineal de un nombre que no existe | Sushi | no encontrado, sin traceback | pasa | Mostró el mensaje de receta no encontrada y el menú siguió. |
-| P11 | E4 | Búsqueda binaria con catálogo desordenado | Pizza margarita | avisa o reordena; no da un falso hit | pasa | Ordenó por nombre, avisó y encontró la receta. |
-| P12 | E4 | Ordenar por un criterio y después por otro | Nombre y luego ID | el orden cambia | pasa | Se verificaron ambos ordenamientos desde el menú. |
+| P09 | E4 | Búsqueda lineal de un nombre que existe | Pizza margarita | lo encuentra | pasa | Verificado con ejecución automatizada del menú. |
+| P10 | E4 | Búsqueda lineal de un nombre que no existe | Sushi | no encontrado, sin traceback | pasa | Verificado con ejecución automatizada del menú. |
+| P11 | E4 | Búsqueda binaria con catálogo desordenado | Pizza margarita | avisa o reordena; no da un falso hit | pasa | El menú avisa que primero debe ordenarse por nombre y no ejecuta la búsqueda binaria. |
+| P12 | E4 | Ordenar por un criterio y después por otro | Nombre y luego ID | el orden cambia | pasa | Verificados ambos algoritmos y la actualización del orden del catálogo. |
 | P17 | E5 | Guardar CSV, salir, volver a entrar |  | los datos siguen |  |  |
 | P14 | E5 | Guardar binario y modificar un registro por id |  | al recargar, ese campo cambió |  |  |
 | P15 | E5 | Abrir un binario truncado o con magia mala | archivo basura | excepción de archivo inválido |  |  |
