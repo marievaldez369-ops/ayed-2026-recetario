@@ -70,13 +70,29 @@ Cola: la usamos para administrar los pedidos respetando el orden de llegada.
 
 | Operación | Tiempo | Espacio | Por qué |
 | --- | --- | --- | --- |
-|  |  |  |  |
+| Listar catálogo | O(n) | O(1) adicional | Recorre una vez las n recetas para imprimirlas. |
+| Búsqueda lineal | O(1) mejor / O(n) peor | O(1) adicional | Puede encontrar el primer elemento; en el peor caso revisa todos. |
+| Búsqueda binaria (algoritmo) | O(log n) | O(1) | En cada comparación descarta aproximadamente la mitad del rango. Requiere colección ordenada por la misma clave. |
+| Preparar lista para búsqueda binaria desde el catálogo | O(n) | O(n) | El catálogo del dominio es un diccionario y se crea una lista de sus valores para acceder por posición. Por eso, el costo total de esta preparación más la búsqueda es O(n), aunque el algoritmo binario es O(log n). |
+| Ordenar por selección | O(n²) | O(1) adicional | Los dos bucles comparan los elementos restantes en cada posición. |
+| Ordenar por inserción | O(n) mejor / O(n²) promedio y peor | O(1) adicional | Si ya está ordenada, hace pocas comparaciones; en el peor caso desplaza muchos elementos. |
+| Ver detalle recursivo | O(m) | O(h) de pila | Visita cada receta/subreceta alcanzable una vez; h es la profundidad máxima de anidamiento. |
+| Agregar/eliminar en menú semanal | O(n) | O(1) adicional | La estructura busca la receta a través de sus elementos antes de modificarla. |
+| Registrar/deshacer historial (pila) | O(1) | O(1) adicional por operación | Apilar y desapilar operan en el tope de la pila. |
+| Encolar/desencolar preparación (cola) | O(1) | O(1) adicional por operación | Las operaciones actúan sobre los extremos de la cola. |
 
-Mediciones (`time.perf_counter`):
+Mediciones con `time.perf_counter`: se usó el catálogo inicial de 9 elementos y una copia repetida 10 veces (90 elementos). Para búsquedas se promediaron 1.000 ejecuciones buscando un nombre inexistente (peor caso para lineal); para cada ordenamiento se promediaron 10 ejecuciones sobre copias nuevas. Los tiempos dependen del equipo y pueden variar.
 
-| Operación | n | segundos |
-| --- | --- | --- |
-|  |  |  |
+| Operación | n | segundos promedio por ejecución |
+| --- | ---: | ---: |
+| Búsqueda lineal (nombre inexistente) | 9 | 0.000000463 |
+| Búsqueda lineal (nombre inexistente) | 90 | 0.000003482 |
+| Búsqueda binaria (nombre inexistente, colección ordenada) | 9 | 0.000000574 |
+| Búsqueda binaria (nombre inexistente, colección ordenada) | 90 | 0.000000921 |
+| Ordenamiento por selección (nombre) | 9 | 0.000006745 |
+| Ordenamiento por selección (nombre) | 90 | 0.000329847 |
+| Ordenamiento por inserción (ID) | 9 | 0.000001350 |
+| Ordenamiento por inserción (ID) | 90 | 0.000172881 |
 
 ## 6. Persistencia (E5)
 
