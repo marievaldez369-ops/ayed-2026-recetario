@@ -19,3 +19,6 @@ def obtener_ingredientes_totales(receta, recetario=None):
   return ingredientes
 
 
+
+
+
