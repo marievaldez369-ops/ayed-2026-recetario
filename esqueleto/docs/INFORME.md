@@ -96,9 +96,87 @@ Mediciones con `time.perf_counter`: se usó el catálogo inicial de 9 elementos 
 
 ## 6. Persistencia (E5)
 
-- Layout del registro binario (campos, `struct`, anchos):
-- Header:
-- Cómo se actualiza un registro por posición:
+En esta entrega incorporamos la persistencia de los datos para poder guardar y recuperar el catálogo de recetas, utilizando archivos de texto simple (`.txt`) y archivos binarios.
+
+**- Persistencia en texto:**
+
+- Se utiliza el archivo `recetas.txt` para almacenar las recetas del catálogo.
+- Los datos se guardan en formato CSV, con un encabezado que identifica los campos.
+- Para leer y escribir se utiliza el módulo `csv` de Python.
+- Al cargar el archivo, se valida que los encabezados y los valores numéricos sean correctos.
+
+**- Layout del registro binario (campos, `struct`, anchos):**
+
+Se utiliza el módulo `struct` de Python para convertir los datos de cada receta en registros binarios de longitud fija.
+
+Formato de registro utilizado:
+
+`struct.Struct("<I 30s H 10s 15s")`
+
+| Campo | Tipo | Tamaño |
+|---|---|---:|
+| ID | Entero sin signo (`I`) | 4 bytes |
+| Nombre | Cadena de 30 bytes (`30s`) | 30 bytes |
+| Tiempo de preparación | Entero sin signo corto (`H`) | 2 bytes |
+| Dificultad | Cadena de 10 bytes (`10s`) | 10 bytes |
+| Categoría | Cadena de 15 bytes (`15s`) | 15 bytes |
+| **Total** | | **61 bytes** |
+
+Las cadenas se codifican en bytes y se completan con bytes nulos (`\0`) cuando no alcanzan el tamaño establecido. De esta manera, todos los registros mantienen la misma longitud.
+
+**- Header:**
+
+El archivo binario cuenta con una cabecera que permite identificar el archivo y conocer la cantidad de registros almacenados.
+
+Formato utilizado:
+
+`struct.Struct("<4s 1s I")`
+
+| Campo | Descripción | Tamaño |
+|---|---|---:|
+| Magia | Identifica el archivo mediante `AYED` | 4 bytes |
+| Tema | Identifica el tema del proyecto (`R`) | 1 byte |
+| Cantidad | Indica el número de recetas almacenadas | 4 bytes |
+| **Total** | | **9 bytes** |
+
+**- Cómo se actualiza un registro por posición:**
+
+Para modificar una receta sin tener que reescribir manualmente todo el archivo, se utiliza el acceso directo mediante `seek()`.
+
+El procedimiento consiste en:
+
+1. Buscar la posición que ocupa la receta dentro del catálogo.
+2. Calcular el desplazamiento correspondiente dentro del archivo binario.
+3. Utilizar `seek()` para ubicar el cursor en el registro que se desea modificar.
+4. Escribir los nuevos datos sobre esa posición.
+
+La posición se calcula mediante la siguiente fórmula:
+
+`HEADER.size + posicion * FORMATO.size`
+
+Esto permite actualizar un registro específico utilizando su posición, sin recorrer ni reconstruir todos los registros anteriores.
+
+**- Manejo de archivos inválidos:**
+
+Se implementó la excepción `ArchivoInvalidoError` para controlar errores durante la lectura de archivos.
+
+Se contemplan situaciones como:
+
+- Archivos binarios incompletos o truncados.
+- Archivos con una magia incorrecta.
+- Archivos de texto con encabezados o registros inválidos.
+
+De esta manera, el programa puede mostrar mensajes de error claros sin finalizar inesperadamente.
+
+**- Pruebas realizadas:**
+
+| Prueba | Descripción | Resultado |
+|---|---|---|
+| P13 | Guardar el catálogo en texto, cerrar el programa y volver a cargar las recetas. | Pasa |
+| P14 | Guardar el catálogo en binario, modificar Sofrito (ID 3) de 25 a 30 minutos y volver a cargar el archivo. | Pasa |
+| P15 | Intentar cargar un archivo con magia incorrecta y comprobar el mensaje de error. | Parcial: faltan probar binario truncado y TXT inválido. |
+
+En las pruebas realizadas se comprobó que el catálogo pudo recuperarse correctamente con sus 30 recetas y que la modificación de Sofrito se mantuvo después de volver a cargar el archivo binario.
 
 ## 7. Reparto de trabajo (E6)
 
