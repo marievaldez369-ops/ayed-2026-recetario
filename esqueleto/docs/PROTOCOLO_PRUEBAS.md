@@ -52,4 +52,4 @@ Mínimos: 8 casos escritos en E2; ejecutados en E3; 15 de regresión en E6 (pila
 - Ejecutar P18–P32 desde una copia limpia del proyecto o restaurar los archivos de datos al finalizar.
 - Las operaciones de pila y cola mantienen su estado durante la ejecución del programa; para repetirlas desde cero, reiniciar el programa.
 - Para P16 y P17 se utilizaron archivos temporales de prueba; los archivos válidos del proyecto se conservaron.
-- Los casos marcados `pasa` con verificación automatizada validan la lógica y los datos de las funciones involucradas; no deben describirse como ejecuciones manuales completas del menú.
+
