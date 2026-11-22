@@ -152,6 +152,6 @@ Este apartado debe completarse con el reparto real del grupo. No se asignan tare
 
 | Integrante | Qué hizo en el proyecto | Qué puede defender en la exposición |
 | --- | --- | --- |
-| Wendy Patiño Pinto | Completar con sus tareas reales. | Completar con los módulos y decisiones que pueda explicar. |
-| Mariela Valdez Ibáñez | Completar con sus tareas reales. | Completar con los módulos y decisiones que pueda explicar. |
-| Natalia Villano | Completar con sus tareas reales. | Completar con los módulos y decisiones que pueda explicar. |
+| Wendy Patiño Pinto | . | . |
+| Mariela Valdez Ibáñez | . | . |
+| Natalia Villano | . | . |
