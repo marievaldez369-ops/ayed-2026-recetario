@@ -1,89 +1,73 @@
 # Informe del TP
 
-Completar y hacer crecer en cada entrega. No hace falta prosa larga: oraciones claras y tablas.
-
 ## 1. Grupo y tema
 
-- Tema: Recetario
-- Por qué lo eligieron (5–8 líneas):
--  Elegimos como tema a trabajar el recetario por que cocinar es una labor que hacemos todos los días; planear y buscar recetas es algo habitual y fácil de hacer, además nos permite trabajar con varios elementos, relacionarlo entre sí , de esa manera representar información detallada sobre las recetas, mostrando sus ingredientes y sus pasos a seguir. Al mismo tiempo nos da la posibilidad de aplicar estructuras de datos que vamos aprendiendo en la materia, un recetario nos da un amplio margen de ideas pudiendo agregar mas recetas, sub-recetas o ingredientes sin tener que complicar la búsqueda, también nos resulta entretenido, divertido, cultural y utilizable, lo cual hace mas fácil el trabajo en grupo y que todas podamos probar el sistema con ejemplos reales e incluso poner nuevas ideas de recetas o ingredientes que compartimos en la vida real, pudiendo incluso planear nuestra alimentacion con esta nueva herramienta.
- 
+- **Tema:** Recetario.
+- **Motivo de elección:** Elegimos trabajar con un recetario porque cocinar y consultar recetas son actividades cotidianas. El tema permite representar información relacionada, como recetas, ingredientes y subrecetas, y organizarla mediante estructuras de datos. Además, ofrece ejemplos concretos para aplicar los contenidos de la materia y probar las operaciones del sistema con información de recetas.
+
 ## 2. Modelo
 
-Qué es un ítem del catálogo. Qué es mutable y qué no (E1). Cómo se relacionan catálogo, colección principal, pila y cola.
+Un elemento del catálogo es una instancia de `Receta`. Cada receta contiene un identificador, nombre, tiempo de preparación, dificultad, categoría, una lista de ingredientes y una lista de subrecetas.
 
-```text
-(pueden pegar un diagrama ASCII o una lista de clases)
-```
-Un item del catálogo sería cada receta individual , compuesta por su nombre y una lista de ingredientes. 
+- **Datos mutables:** el catálogo, las listas de ingredientes y las listas de subrecetas pueden modificarse durante la ejecución. Los atributos de una receta también se actualizan en las operaciones de modificación.
+- **Datos inmutables:** los valores de tipo `str`, `int` y otros tipos escalares son inmutables como objetos de Python. Sin embargo, eso no significa que los atributos de una receta sean inmutables: el programa puede asignarles nuevos valores.
 
--Mutables: listas y diccionarios(recetas e ingredientes), son dinámicas y pueden cambiar.
+**Relación entre las estructuras:**
 
--Inmutables: nombre de receta(strings) para evitar efectos secundarios y proteger la identidad de cada receta.
-
--Relación catálogo/colección/pila/cola:
-
--El catálogo es la lista principal y almacena las recetas disponibles.
-
--La colección representa la estructura base que organiza cada receta.
-
--La pila se usó para administrar los pasos de preparación.
-
--La cola se usó para manejar tareas en orden.
+- `Recetario` administra el catálogo, que se almacena en una `ListaEnlazada` de objetos `Receta`.
+- Cada objeto `Receta` puede contener ingredientes y referencias a otras recetas que funcionan como subrecetas.
+- `HistorialCocina` utiliza una `Pila` para registrar recetas cocinadas y permitir consultar o deshacer la última acción (LIFO).
+- `ColaPreparacion` utiliza una `Cola` para organizar las recetas pendientes de preparación (FIFO).
+- `MenuSemanal` permanece como módulo del proyecto, pero no es utilizado por el menú principal actual.
 
 ## 3. Recursión (E2)
-- Función: En esta entrega usamos una función recursiva que llamamos mostrar_receta_completa() para descomponer recetas que contiene sub-recetas, la recursión nos permite descomponer sin importar cuantos niveles haya. El objetivo es mostrar cómo una receta puede estar compuesta por más recetas y cómo el programa desglosa todos los ingredientes hasta llegar a las hojas.
-  
-- Caso Base: Cuando la receta no tiene subrecetas, devuelve sus ingredientes.
 
-- Caso recursivo: Cuando la receta tiene subrecetas, acumula sus ingredientes y sigue explorando cada subreceta hasta terminar y agrega los demás ingredientes.
+El proyecto utiliza las funciones `mostrar_receta_completa()` y `obtener_ingredientes_totales()` para recorrer una receta y sus subrecetas de forma recursiva.
 
-- Traza de un ejemplo real del dataset:
+- **Caso base:** una receta no tiene subrecetas. Se muestran o se devuelven sus propios ingredientes y termina ese recorrido.
+- **Caso recursivo:** si una receta tiene subrecetas, se llama nuevamente a la función para recorrer cada una de ellas.
 
- Ejemplo paso a paso:
+**Ejemplo con el dataset incluido en esta versión:**
 
- 1- Hamburguesa completa = ingredientes propios: lechuga, tomate, queso.
-  
- 2- Subreceta Medallón de carne = carne picada, huevo, pan rallado, sal, pimienta.
- 
- 3- Subreceta Pan casero = harina, levadura, agua, azúcar, sal, manteca, huevo.
+- Receta principal: `Hamburguesa casera` (ID 27).
+- Subreceta asociada: `Pico de gallo` (ID 8).
+- La operación muestra los datos e ingredientes de la hamburguesa y luego recorre la subreceta Pico de gallo.
 
-Resultado final: combinación de todos los ingredientes.
+Como ejemplo de caso base se puede utilizar `Chimichurri` (ID 1), que no tiene subrecetas asociadas.
 
 ## 4. TADs (E3)
 
-| TAD | Operaciones | Invariante |
+| TAD | Operaciones utilizadas | Invariante / comportamiento |
 | --- | --- | --- |
-| ListaEnlazada | insertar, eliminar, buscar y recorrer |mantenemos los elementos unidos mediante nodos y conservamos el tamaño actualizado de la lista|
-| Pila | apilar, desapilar y ver tope |el último elemento agregado es el primero en salir (LIFO)|
-| Cola | encolar, desencolar y ver frente|  el primer elemento agregado es el primero en salir (FIFO)|
+| Lista enlazada | Insertar al final, buscar, eliminar y recorrer | Los nodos se enlazan mediante referencias al siguiente nodo y el tamaño se mantiene actualizado. |
+| Pila | Apilar, desapilar, consultar el tope y comprobar si está vacía | LIFO: el último elemento agregado es el primero en salir. |
+| Cola | Encolar, desencolar, consultar el frente y comprobar si está vacía | FIFO: el primer elemento agregado es el primero en salir. |
 
-Dónde se usa cada uno en el dominio.
+**Uso en el dominio:** la lista enlazada almacena las recetas del catálogo; la pila se utiliza en `HistorialCocina` para registrar recetas cocinadas; y la cola se utiliza en `ColaPreparacion` para administrar las recetas pendientes respetando el orden de llegada.
 
--En los pasos de preparación de la recta.
-
-- Pedidos de recetas en la cocina.
-ListaEnlazada: la usamos para almacenar las recetas del catálogo.
-Pila: la usamos para guardar un historial de acciones realizadas.
-Cola: la usamos para administrar los pedidos respetando el orden de llegada. 
 ## 5. Complejidad (E4)
 
-| Operación | Tiempo | Espacio | Por qué |
+En la tabla, `n` representa la cantidad de recetas del catálogo, `m` la cantidad total de recetas y subrecetas visitadas en un recorrido recursivo, y `h` la profundidad máxima de la recursión.
+
+| Operación | Tiempo | Espacio adicional | Justificación |
 | --- | --- | --- | --- |
-| Listar catálogo | O(n) | O(1) adicional | Recorre una vez las n recetas para imprimirlas. |
-| Búsqueda lineal | O(1) mejor / O(n) peor | O(1) adicional | Puede encontrar el primer elemento; en el peor caso revisa todos. |
-| Búsqueda binaria (algoritmo) | O(log n) | O(1) | En cada comparación descarta aproximadamente la mitad del rango. Requiere colección ordenada por la misma clave. |
-| Preparar lista para búsqueda binaria desde el catálogo | O(n) | O(n) | El catálogo del dominio es un diccionario y se crea una lista de sus valores para acceder por posición. Por eso, el costo total de esta preparación más la búsqueda es O(n), aunque el algoritmo binario es O(log n). |
-| Ordenar por selección | O(n²) | O(1) adicional | Los dos bucles comparan los elementos restantes en cada posición. |
-| Ordenar por inserción | O(n) mejor / O(n²) promedio y peor | O(1) adicional | Si ya está ordenada, hace pocas comparaciones; en el peor caso desplaza muchos elementos. |
-| Ver detalle recursivo | O(m) | O(h) de pila | Visita cada receta/subreceta alcanzable una vez; h es la profundidad máxima de anidamiento. |
-| Agregar/eliminar en menú semanal | O(n) | O(1) adicional | La estructura busca la receta a través de sus elementos antes de modificarla. |
-| Registrar/deshacer historial (pila) | O(1) | O(1) adicional por operación | Apilar y desapilar operan en el tope de la pila. |
-| Encolar/desencolar preparación (cola) | O(1) | O(1) adicional por operación | Las operaciones actúan sobre los extremos de la cola. |
+| Listar catálogo | O(n) | O(1) | Recorre una vez las recetas para mostrarlas. |
+| Búsqueda lineal | O(1) mejor / O(n) peor | O(1) | Puede encontrar el primer elemento; en el peor caso recorre toda la colección. |
+| Preparar colección para búsqueda binaria | O(n) | O(n) | El menú convierte la lista enlazada en una lista de Python para poder acceder por índice. |
+| Búsqueda binaria | O(log n) | O(1) | En cada comparación descarta aproximadamente la mitad del rango. La colección debe estar ordenada por la misma clave utilizada en la búsqueda. |
+| Búsqueda binaria desde el menú, incluyendo la conversión | O(n) | O(n) | El costo de convertir el catálogo a lista domina al costo O(log n) del algoritmo binario. |
+| Ordenamiento por selección | O(n²) | O(1) | Compara los elementos restantes para seleccionar el menor de cada posición. |
+| Ordenamiento por inserción | O(n) mejor / O(n²) promedio y peor | O(1) | Si la colección ya está ordenada realiza pocas comparaciones; en el peor caso desplaza muchos elementos. |
+| Mostrar receta completa recursivamente | O(m) | O(h) | Visita cada receta/subreceta alcanzable una vez y utiliza la pila de llamadas hasta la profundidad máxima. |
+| Obtener ingredientes totales recursivamente | O(m) | O(m) para la lista resultado, más O(h) de llamadas | Recorre las recetas y construye una lista con los ingredientes reunidos. |
+| Alta o baja de receta en el catálogo | O(n) | O(1) adicional | Primero se busca la receta o se verifica que el ID no exista; la búsqueda domina el costo. |
+| Modificar receta | O(n) | O(1) adicional | Se busca la receta por ID y luego se actualizan sus atributos. |
+| Apilar, desapilar o consultar el tope | O(1) | O(1) adicional por operación | La pila enlazada opera sobre el extremo superior. |
+| Encolar, desencolar o consultar el frente | O(1) | O(1) adicional por operación | La cola mantiene referencias a sus extremos y opera sobre ellos. |
 
-Mediciones con `time.perf_counter`: se usó el catálogo inicial de 9 elementos y una copia repetida 10 veces (90 elementos). Para búsquedas se promediaron 1.000 ejecuciones buscando un nombre inexistente (peor caso para lineal); para cada ordenamiento se promediaron 10 ejecuciones sobre copias nuevas. Los tiempos dependen del equipo y pueden variar.
+**Mediciones de E4:** el registro de mediciones que se conserva en esta versión corresponde a las pruebas realizadas entonces con un catálogo de 9 elementos y una copia de 90 elementos. No se deben interpretar como mediciones sobre las 30 recetas del dataset que acompaña a esta versión. Para búsquedas se promediaron 1.000 ejecuciones buscando un nombre inexistente; para cada ordenamiento se promediaron 10 ejecuciones sobre copias nuevas. Los tiempos dependen del equipo.
 
-| Operación | n | segundos promedio por ejecución |
+| Operación | n | Segundos promedio por ejecución |
 | --- | ---: | ---: |
 | Búsqueda lineal (nombre inexistente) | 9 | 0.000000463 |
 | Búsqueda lineal (nombre inexistente) | 90 | 0.000003482 |
@@ -96,90 +80,78 @@ Mediciones con `time.perf_counter`: se usó el catálogo inicial de 9 elementos 
 
 ## 6. Persistencia (E5)
 
-En esta entrega incorporamos la persistencia de los datos para poder guardar y recuperar el catálogo de recetas, utilizando archivos de texto simple (`.txt`) y archivos binarios.
+El sistema permite guardar y recuperar los datos del catálogo mediante un archivo de texto y un archivo binario.
 
-**- Persistencia en texto:**
+### Persistencia en texto
 
-- Se utiliza el archivo `recetas.txt` para almacenar las recetas del catálogo.
-- Los datos se guardan en formato CSV, con un encabezado que identifica los campos.
-- Para leer y escribir se utiliza el módulo `csv` de Python.
-- Al cargar el archivo, se valida que los encabezados y los valores numéricos sean correctos.
+- El archivo `data/recetas.txt` almacena los campos `id`, `nombre`, `tiempo_min`, `dificultad` y `categoria`.
+- Se utiliza el módulo `csv` de Python y una fila de encabezados.
+- Al cargar, se valida que el encabezado coincida, que los registros tengan la cantidad correcta de campos, que no haya campos vacíos, que los ID sean enteros positivos y únicos y que el tiempo sea un entero no negativo.
 
-**- Layout del registro binario (campos, `struct`, anchos):**
+### Layout del registro binario
 
-Se utiliza el módulo `struct` de Python para convertir los datos de cada receta en registros binarios de longitud fija.
+Se utiliza `struct.Struct("<I30sH10s15s")`. El prefijo `<` indica orden little-endian y tamaños estándar sin alineación nativa.
 
-Formato de registro utilizado:
+| Campo | Código `struct` | Tamaño |
+| --- | --- | ---: |
+| ID | `I` | 4 bytes |
+| Nombre | `30s` | 30 bytes |
+| Tiempo de preparación | `H` | 2 bytes |
+| Dificultad | `10s` | 10 bytes |
+| Categoría | `15s` | 15 bytes |
+| **Total por registro** | | **61 bytes** |
 
-`struct.Struct("<I 30s H 10s 15s")`
+Los campos de texto se codifican en UTF-8 y se completan con bytes nulos (`\0`) hasta alcanzar el ancho establecido. Si el texto supera el ancho disponible, la escritura se rechaza.
 
-| Campo | Tipo | Tamaño |
-|---|---|---:|
-| ID | Entero sin signo (`I`) | 4 bytes |
-| Nombre | Cadena de 30 bytes (`30s`) | 30 bytes |
-| Tiempo de preparación | Entero sin signo corto (`H`) | 2 bytes |
-| Dificultad | Cadena de 10 bytes (`10s`) | 10 bytes |
-| Categoría | Cadena de 15 bytes (`15s`) | 15 bytes |
-| **Total** | | **61 bytes** |
+### Header
 
-Las cadenas se codifican en bytes y se completan con bytes nulos (`\0`) cuando no alcanzan el tamaño establecido. De esta manera, todos los registros mantienen la misma longitud.
+La cabecera utiliza `struct.Struct("<4s1sI")` y ocupa 9 bytes.
 
-**- Header:**
-
-El archivo binario cuenta con una cabecera que permite identificar el archivo y conocer la cantidad de registros almacenados.
-
-Formato utilizado:
-
-`struct.Struct("<4s 1s I")`
-
-| Campo | Descripción | Tamaño |
-|---|---|---:|
-| Magia | Identifica el archivo mediante `AYED` | 4 bytes |
-| Tema | Identifica el tema del proyecto (`R`) | 1 byte |
-| Cantidad | Indica el número de recetas almacenadas | 4 bytes |
+| Campo | Valor / función | Tamaño |
+| --- | --- | ---: |
+| Magia | `AYED`, identifica el formato del TP | 4 bytes |
+| Tema | `R`, identifica el tema Recetario | 1 byte |
+| Cantidad | Cantidad de registros almacenados | 4 bytes |
 | **Total** | | **9 bytes** |
 
-**- Cómo se actualiza un registro por posición:**
+### Actualización de un registro por posición
 
-Para modificar una receta sin tener que reescribir manualmente todo el archivo, se utiliza el acceso directo mediante `seek()`.
+La función `actualizar_registro()` abre el archivo en modo `r+b`, valida el header y el tamaño total, calcula el desplazamiento del registro y utiliza `seek()` para escribir únicamente en esa posición.
 
-El procedimiento consiste en:
-
-1. Buscar la posición que ocupa la receta dentro del catálogo.
-2. Calcular el desplazamiento correspondiente dentro del archivo binario.
-3. Utilizar `seek()` para ubicar el cursor en el registro que se desea modificar.
-4. Escribir los nuevos datos sobre esa posición.
-
-La posición se calcula mediante la siguiente fórmula:
+La posición inicial de un registro se calcula así:
 
 `HEADER.size + posicion * FORMATO.size`
 
-Esto permite actualizar un registro específico utilizando su posición, sin recorrer ni reconstruir todos los registros anteriores.
+Como el header ocupa 9 bytes y cada registro ocupa 61 bytes, el desplazamiento se obtiene a partir del número de registro y del tamaño fijo del registro.
 
-**- Manejo de archivos inválidos:**
+### Manejo de archivos inválidos
 
-Se implementó la excepción `ArchivoInvalidoError` para controlar errores durante la lectura de archivos.
+Se utiliza `ArchivoInvalidoError` para informar problemas de lectura o escritura. Entre las validaciones implementadas se encuentran:
 
-Se contemplan situaciones como:
+- Header binario incompleto.
+- Magia incorrecta o tema distinto de Recetario.
+- Tamaño binario que no coincide con la cantidad indicada en el header.
+- Archivo de texto inexistente, encabezado incorrecto, campos vacíos o cantidad incorrecta de campos.
+- ID repetido o no válido y tiempo negativo en el archivo de texto.
 
-- Archivos binarios incompletos o truncados.
-- Archivos con una magia incorrecta.
-- Archivos de texto con encabezados o registros inválidos.
+### Estado de las pruebas de persistencia
 
-De esta manera, el programa puede mostrar mensajes de error claros sin finalizar inesperadamente.
+Los resultados marcados como aprobados se verificaron mediante pruebas automatizadas de las funciones de persistencia y del modelo. Esto comprueba la lógica involucrada, aunque no equivale a ejecutar manualmente todos los pasos desde el menú CLI.
 
-**- Pruebas realizadas:**
-
-| Prueba | Descripción | Resultado |
-|---|---|---|
-| P13 | Guardar el catálogo en texto, cerrar el programa y volver a cargar las recetas. | Pasa |
-| P14 | Guardar el catálogo en binario, modificar Sofrito (ID 3) de 25 a 30 minutos y volver a cargar el archivo. | Pasa |
-| P15 | Intentar cargar un archivo con magia incorrecta y comprobar el mensaje de error. | Parcial: faltan probar binario truncado y TXT inválido. |
-
-En las pruebas realizadas se comprobó que el catálogo pudo recuperarse correctamente con sus 30 recetas y que la modificación de Sofrito se mantuvo después de volver a cargar el archivo binario.
+| Prueba | Descripción | Estado documentado |
+| --- | --- | --- |
+| P13 | Guardar en texto y recuperar los datos desde una nueva instancia de `Recetario`. | Pasa: se guardó el TXT y una nueva instancia recuperó los 30 registros. No se simuló el cierre completo de la aplicación. |
+| P14 | Guardar en binario, modificar Sofrito (ID 3) de 25 a 30 minutos y volver a cargar. | Pasa según la ejecución informada: se recargaron 30 recetas y Sofrito conservó 30 minutos. El código implementa la actualización mediante `seek()`. |
+| P15 | Cargar un binario con magia incorrecta. | Pasa según la ejecución informada: se mostró un mensaje de archivo inválido sin traceback. |
+| P16 | Cargar una copia de un binario válido que fue truncada. | Pasa: la carga detectó el tamaño incorrecto y lanzó `ArchivoInvalidoError`, sin aceptar el archivo. |
+| P17 | Cargar una copia de `recetas.txt` con encabezado o registro incorrecto. | Pasa: la validación detectó el encabezado incorrecto y lanzó `ArchivoInvalidoError`. |
 
 ## 7. Reparto de trabajo (E6)
 
-| Integrante | Qué hizo | Qué puede defender |
+Este apartado debe completarse con el reparto real del grupo. No se asignan tareas por suposición.
+
+| Integrante | Qué hizo en el proyecto | Qué puede defender en la exposición |
 | --- | --- | --- |
-|  |  |  |
+| Wendy Patiño Pinto | Completar con sus tareas reales. | Completar con los módulos y decisiones que pueda explicar. |
+| Mariela Valdez Ibáñez | Completar con sus tareas reales. | Completar con los módulos y decisiones que pueda explicar. |
+| Natalia Villano | Completar con sus tareas reales. | Completar con los módulos y decisiones que pueda explicar. |
