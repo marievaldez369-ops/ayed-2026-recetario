@@ -148,10 +148,10 @@ Los resultados marcados como aprobados se verificaron mediante pruebas automatiz
 
 ## 7. Reparto de trabajo (E6)
 
-Este apartado debe completarse con el reparto real del grupo. No se asignan tareas por suposición.
-
 | Integrante | Qué hizo en el proyecto | Qué puede defender en la exposición |
 | --- | --- | --- |
-| Wendy Patiño Pinto | . | . |
+| Wendy Patiño Pinto | Listas enlazadas (E3), pilas y colas (E3), búsqueda y ordenamiento (E4). | . |
 | Mariela Valdez Ibáñez | . | . |
-| Natalia Villano | . | . |
+| Natalia Villano | Recursión (E2) y persistencia de datos mediante archivos CSV (E5). | . |
+
+La primera entrega fue realizada en conjunto por las tres integrantes. En las entregas posteriores, aunque algunas tareas se desarrollaron de manera individual para organizar el trabajo, todas las integrantes revisábamos y corroborábamos lo realizado por las demás. Por eso, la división que se detalla a continuación identifica principalmente quién estuvo a cargo de cada desarrollo, sin dejar de reconocer el trabajo de revisión compartida.
